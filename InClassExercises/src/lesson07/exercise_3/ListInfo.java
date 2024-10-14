@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListInfo {
-	List<String> list = new ArrayList<>();
-	MyStringList strList = new MyStringList();
+	static List<String> list = new ArrayList<>();
+	static MyStringList strList = new MyStringList();
 	public static void main(String[] args) {
 		ListInfo li = new ListInfo();
 		li.process();
+		System.out.println(strList.toString());
 	}
 	
 	public void process() {
@@ -18,5 +19,6 @@ public class ListInfo {
 		list.add("C");
 		
 		//use java8 foreach to copy all list elements into strList
+		list.forEach(l -> strList.add(l));
 	}
 }
