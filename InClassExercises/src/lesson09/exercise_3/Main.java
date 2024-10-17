@@ -1,13 +1,27 @@
 package lesson09.exercise_3;
-import java.util.*;
-public class Main {
 
-	//Use Comparator.comparing and thenComparing to sort 
-	//the list by balance and then by ownerName
-	//Collect your stream into a list and print the sorted 
-	//result to the console
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.*;
+
+public class Main {
+	static enum SortMethod {BYBALANCE, BYNAME};
+	Function<Account, Integer> byBalance = b -> b.getBalance(); 
+	Function<Account, String> byName = n -> n.getOwnerName();
+	
+	public void sort(List<Account> accts, final SortMethod method) {
+		if (method == SortMethod.BYBALANCE) {
+			Collections.sort(accts, Comparator.comparing(byBalance).thenComparing(byName));
+		} else {
+			Collections.sort(accts, Comparator.comparing(byName).thenComparing(byBalance));
+		}
+	}
+
 	public static void main(String[] args) {
 		List<Account> accounts = new ArrayList<Account>() {
+			private static final long serialVersionUID = 1L;
 			{
 				add(new Account("Bob", 5000, 1001));
 				add(new Account("Jim", 10000, 1002));
@@ -19,7 +33,12 @@ public class Main {
 		};
 		
 		//sorting code here
-
+		Main a = new Main();
+		a.sort(accounts, Main.SortMethod.BYBALANCE);
+		System.out.println(accounts);
+		//same instance
+		a.sort(accounts, Main.SortMethod.BYNAME);
+		System.out.println(accounts);
 	}
 
 }
