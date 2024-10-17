@@ -1,6 +1,7 @@
 package lesson09.exercise_5;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 	//Use DoubleSummaryStatistics to output the top test score,
@@ -19,6 +20,11 @@ public class Main {
 				add(new ExamData("Alex", 84));
 			}
 		};
+		
+		DoubleSummaryStatistics summary = data.stream().collect(Collectors.summarizingDouble(ExamData::getTestScore)); 
+		System.out.println("Top score: " + summary.getMax());
+		System.out.println("Bottom score: " + summary.getMin());
+		System.out.println("Average score: " + Math.round(summary.getAverage()*100.0)/100.0);
 	}
 
 }
