@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
@@ -26,6 +28,8 @@ public class OldFileIO {
 			}
 		} catch(IOException e) {
 			LOG.warning("IOException thrown when reading file: " + e.getMessage());
+			List<Throwable> supressed = Arrays.asList(e.getSuppressed());
+			supressed.forEach(errorOut -> LOG.warning("Supressed message: " + errorOut.getMessage()));
 		} finally {  //close the resource
 			try {
 				if(fr != null) fr.close();
