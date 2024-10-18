@@ -1,6 +1,6 @@
 package lesson10.exercise_2;
 
-@BugReport(assignedTo = "??") //, severity = ?)
+@BugReport(assignedTo = "Hy", severity = 1)
 public class StillMoreBadCode {
 
 	public int multiply(int x, int y) {

@@ -18,6 +18,15 @@ public class AnnotationInfo {
 			System.out.printf("%nAssigned To : %s ", annotation.assignedTo());
 			System.out.printf("%nSeverity : %d ", annotation.severity());
 		}
+		
+		System.out.println("\n----------------------");
+		System.out.println("\nAnnotation on StillMoreBadCode\n--------------------------");
+		Class<StillMoreBadCode> StillMoreBadCodeClass = StillMoreBadCode.class;
+		if (moreBadCodeClass.isAnnotationPresent(BugReport.class)) {			 
+			BugReport annotation = (BugReport)StillMoreBadCodeClass.getAnnotation(BugReport.class);			 
+			System.out.printf("%nAssigned To : %s ", annotation.assignedTo());
+			System.out.printf("%nSeverity : %d ", annotation.severity());
+		}
 
 	}
 
