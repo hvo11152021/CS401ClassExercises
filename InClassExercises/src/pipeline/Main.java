@@ -41,7 +41,7 @@ public class Main {
 		//use this list 
 		List<Employee> list = EmployeeTestData.getList();
 		list.stream().filter(e -> e.getSalary() > 55000 || e.getSalary() < 120000)
-					 .sorted(Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary).reversed())
+					 .sorted(Comparator.comparing(Employee::getName).thenComparing((Employee e) -> e.getSalary()).reversed())
 					 .collect(Collectors.toList());
 		System.out.println(list);
 		
